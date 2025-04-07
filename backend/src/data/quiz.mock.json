@@ -1,0 +1,52 @@
+{
+    "example_questions": {
+        "commonSense": [
+            { "question": "지구에서 가장 큰 동물은?", "options": ["코끼리", "기린", "대왕고래", "하마"], "answer": 2 },
+            { "question": "우리나라의 수도는?", "options": ["부산", "서울", "대전", "인천"], "answer": 1 },
+            { "question": "가장 높은 산은?", "options": ["에베레스트", "백두산", "한라산", "알프스"], "answer": 0 },
+            { "question": "물은 어떤 상태로 존재할 수 있나요?", "options": ["고체", "액체", "기체", "모두"], "answer": 3 },
+            { "question": "세계에서 인구가 가장 많은 나라는?", "options": ["미국", "인도", "중국", "러시아"], "answer": 2 },
+            { "question": "1년은 며칠일까요?", "options": ["365일", "366일", "364일", "360일"], "answer": 0 }
+        ],
+        "nonsense": [
+            { "question": "세상에서 가장 지루한 중학교는?", "options": ["금요일중", "토요일중", "일요일중", "월요일중"], "answer": 3 },
+            { "question": "자동차가 도망가면 뭐라고 할까?", "options": ["카드", "카카오", "카레이서", "카놀라유"], "answer": 2 },
+            { "question": "물이 화가 나면?", "options": ["워터폭발", "부글부글", "수소폭발", "H2O"], "answer": 1 },
+            { "question": "소가 웃으면?", "options": ["우하하", "소소", "우유", "하하"], "answer": 2 },
+            { "question": "밤에 자는 아이는?", "options": ["자장면", "자바", "잠꾸러기", "야경꾼"], "answer": 3 },
+            { "question": "신이 가장 좋아하는 고기는?", "options": ["양고기", "소고기", "신선로", "돼지고기"], "answer": 2 }
+        ],
+        "history": [
+            { "question": "임진왜란이 일어난 해는?", "options": ["1592년", "1600년", "1453년", "1789년"], "answer": 0 },
+            { "question": "조선의 첫 임금은?", "options": ["세종", "태조", "중종", "영조"], "answer": 1 },
+            { "question": "대한민국 임시정부는 어디서 수립되었나요?", "options": ["상하이", "서울", "평양", "도쿄"], "answer": 0 },
+            { "question": "6.25 전쟁은 언제 발발했나요?", "options": ["1948년", "1950년", "1965년", "1970년"], "answer": 1 },
+            { "question": "신라의 삼국 통일은 언제인가요?", "options": ["676년", "668년", "935년", "892년"], "answer": 1 },
+            { "question": "한글을 만든 왕은?", "options": ["세종대왕", "정조", "태종", "영조"], "answer": 0 }
+        ],
+        "science": [
+            { "question": "물의 화학식은?", "options": ["H2O", "CO2", "NaCl", "O2"], "answer": 0 },
+            { "question": "지구의 위성은?", "options": ["화성", "달", "태양", "금성"], "answer": 1 },
+            { "question": "빛의 속도는?", "options": ["30만km/s", "10만km/s", "15만km/s", "5만km/s"], "answer": 0 },
+            { "question": "전기를 저장하는 장치는?", "options": ["배터리", "모터", "발전기", "램프"], "answer": 0 },
+            { "question": "가장 작은 입자는?", "options": ["분자", "원자", "전자", "중성자"], "answer": 2 },
+            { "question": "온도를 측정하는 도구는?", "options": ["자", "저울", "온도계", "테이프"], "answer": 2 }
+        ],
+        "koreanCulture": [
+            { "question": "한복의 상의는?", "options": ["치마", "저고리", "두루마기", "바지"], "answer": 1 },
+            { "question": "추석에 먹는 음식은?", "options": ["떡국", "송편", "비빔밥", "갈비"], "answer": 1 },
+            { "question": "설날에 하는 놀이?", "options": ["윷놀이", "팽이치기", "제기차기", "모두"], "answer": 3 },
+            { "question": "한식에 해당하지 않는 것은?", "options": ["비빔밥", "김치", "햄버거", "불고기"], "answer": 2 },
+            { "question": "한국의 전통 악기는?", "options": ["기타", "가야금", "피아노", "드럼"], "answer": 1 },
+            { "question": "한옥의 특징은?", "options": ["서양식", "지붕 곡선", "모던", "고층"], "answer": 1 }
+        ],
+        "movieDrama": [
+            { "question": "기생충 영화의 감독은?", "options": ["박찬욱", "봉준호", "이창동", "김한민"], "answer": 1 },
+            { "question": "드라마 '도깨비' 주인공은?", "options": ["공유", "이병헌", "이동욱", "송강호"], "answer": 0 },
+            { "question": "영화 '명량'의 주인공은?", "options": ["장군", "이순신", "정약용", "세종"], "answer": 1 },
+            { "question": "오징어 게임에서 참가자는?", "options": ["123", "456", "789", "101"], "answer": 1 },
+            { "question": "'부산행'에 등장하는 생물은?", "options": ["좀비", "공룡", "괴물", "귀신"], "answer": 0 },
+            { "question": "'태극기 휘날리며'는 어떤 전쟁?", "options": ["6.25", "1차대전", "베트남전", "임진왜란"], "answer": 0 }
+        ]
+    }
+}

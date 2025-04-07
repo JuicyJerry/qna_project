@@ -1,0 +1,10 @@
+{
+    "categories": [
+        { "id": "commonSense", "name": "commonSense" },
+        { "id": "nonsense", "name": "nonsense" },
+        { "id": "history", "name": "history" },
+        { "id": "science", "name": "science" },
+        { "id": "koreanCulture", "name": "koreanCulture" },
+        { "id": "movieDrama", "name": "movieDrama" }
+    ]
+}

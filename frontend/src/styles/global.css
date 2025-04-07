@@ -1,3 +1,68 @@
 /* 전역 스타일 (a, button 등) */
 @import "./theme.css";
 @import "./reset.css";
+
+@layer utilities {
+    .before-number-1::before {
+        content: "1. ";
+        margin-right: 0.5rem; /* 8px */
+        display: inline-block;
+    }
+    .before-number-2::before {
+        content: "2. ";
+        margin-right: 0.5rem; /* 8px */
+        display: inline-block;
+    }
+    .before-number-3::before {
+        content: "3. ";
+        margin-right: 0.5rem; /* 8px */
+        display: inline-block;
+    }
+    .before-number-4::before {
+        content: "4. ";
+        margin-right: 0.5rem; /* 8px */
+        display: inline-block;
+    }
+
+    .animate-fadeDown {
+        animation: fadeDown 0.6s ease-out forwards;
+    }
+    .animate-scaleIn {
+        animation: scaleIn 0.4s ease-out forwards;
+    }
+    .animate-bounceOnce {
+        animation: bounceOnce 0.6s ease-out;
+    }
+
+    @keyframes fadeDown {
+        0% {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes scaleIn {
+        0% {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    @keyframes bounceOnce {
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-8px);
+        }
+    }
+}
