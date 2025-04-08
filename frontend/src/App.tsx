@@ -5,6 +5,9 @@ import CategoryListPage from "./pages/CategoryListPage";
 import HomePage from "./pages/HomePage";
 import Navigation from "./components/Navigation";
 import ResultPage from "./pages/ResultPage";
+import LoginPage from "./pages/LoginPage";
+import OAuthGoogleHandler from "./utils/OAuthGoogleHandler";
+import OAuthKakaoHandler from "./utils/OAuthKakaoHandler";
 
 function App() {
     return (
@@ -15,6 +18,9 @@ function App() {
                 <Route path="/quiz" element={<CategoryListPage />} />
                 <Route path="/quiz/:category" element={<QuizPage />} />
                 <Route path="/result" element={<ResultPage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/oauthgoogle" element={<OAuthGoogleHandler />} />
+                <Route path="/oauthkakao" element={<OAuthKakaoHandler />} />
             </Routes>
         </div>
     );

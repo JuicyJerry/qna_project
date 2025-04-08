@@ -17,3 +17,11 @@ export interface QNAs {
     koreanCulture: Quiz[];
     movieDrama: Quiz[];
 }
+
+export interface User {
+    id: string;
+    email: string;
+    password: string;
+    nickname: string;
+    provider: "local" | "google" | "kakao";
+}
