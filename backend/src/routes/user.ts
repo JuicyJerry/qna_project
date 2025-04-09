@@ -8,6 +8,18 @@ import { UserModel } from "../model/User";
 const router = Router();
 const tempUsers: User[] = []; // 임시 저장소 (MongoDB 연결 시 대체 예정)
 
+const logoutHandler = async (req: Request, res: Response): Promise<void> => {
+    console.log("[logoutHandler]  ===> ");
+
+    res.clearCookie("token", {
+        httpOnly: true,
+        secure: false,
+        sameSite: "lax",
+    });
+
+    res.status(200).json({ success: true, message: "로그아웃 되었습니다." });
+};
+
 const loginHandler = async (req: Request, res: Response): Promise<void> => {
     const JWT_SECRET: string = process.env.JWT_SECRET ?? "default_secret";
     const JWT_EXPIRES_IN: string = process.env.JWT_EXPIRES_IN ?? "1h";
@@ -15,8 +27,10 @@ const loginHandler = async (req: Request, res: Response): Promise<void> => {
     const { email, password } = req.body;
     console.log("[loginHandler] email, password ===> ", email, password);
 
-    if (!email || !password) res.status(400).json({ message: "이메일과 비밀번호를 모두 입력해주세요." });
-    // return
+    if (!email || !password) {
+        res.status(400).json({ message: "이메일과 비밀번호를 모두 입력해주세요." });
+        return;
+    }
 
     try {
         const user = await UserModel.findOne({ email });
@@ -30,7 +44,7 @@ const loginHandler = async (req: Request, res: Response): Promise<void> => {
 
         if (!isMatch) {
             res.status(401).json({ message: "비밀번호가 일치하지 않습니다." });
-            //  return
+            return;
         }
 
         const token = jwt.sign({ id: user._id, email }, JWT_SECRET, { expiresIn: JWT_EXPIRES_IN } as jwt.SignOptions);
@@ -47,7 +61,7 @@ const loginHandler = async (req: Request, res: Response): Promise<void> => {
     } catch (err) {
         console.error("로그인 오류:", err);
         res.status(500).json({ message: "로그인 중 오류 발생" });
-        // return
+        return;
     }
 
     // const signOptions: SignOptions = {
@@ -97,14 +111,14 @@ const registerHandler = async (req: Request, res: Response) => {
 
     if (!email || !password || !nickname) {
         res.status(400).json({ success: false, message: "모든 필드를 입력해주세요." });
-        // return
+        return;
     }
 
     try {
         const existingUser = await UserModel.findOne({ email });
         if (existingUser) {
             res.status(409).json({ message: "이미 존재하는 이메일입니다." });
-            // return
+            return;
         }
 
         const hashedPw = await bcrypt.hash(password, 10);
@@ -161,6 +175,7 @@ const registerHandler = async (req: Request, res: Response) => {
 };
 
 router.post("/login", loginHandler);
+router.get("/logout", logoutHandler);
 router.post("/register", registerHandler);
 
 export default router;

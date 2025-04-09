@@ -1,26 +1,44 @@
-import { memo, useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import logo from "../assets/logo.svg";
+import { memo, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import React from "react";
+import { useAuth } from "../contexts/AuthContext";
+import { logout } from "../api/auth";
+import logo from "../assets/logo.svg";
 
 const Navigation = memo(() => {
-    const [isLogin, setIsLogin] = useState(false);
-    const location = useLocation();
+    // const [isLogin, setIsLogin] = useState(false);
+    const { isLogin, setIsLogin } = useAuth();
+    const navigate = useNavigate();
+    // const location = useLocation();
 
-    const navLinks = [
-        { path: "/", label: "Home" },
-        { path: "/quiz", label: "Quiz" },
-    ];
+    // const navLinks = [
+    //     { path: "/", label: "Home" },
+    //     { path: "/quiz", label: "Quiz" },
+    // ];
 
     useEffect(() => {
+        console.log("Navigation[isLogin] ---> ", isLogin);
         // const user = localStorage.getItem("user");
         // setIsLogin(!!user);
-    }, []);
+    }, [isLogin]);
 
-    const onClickHandler = () => {
-        // 로그아웃 로직 여기에 추가
-        localStorage.removeItem("user");
+    const handleLogout = async () => {
+        console.log("Navigation[handleLogout] ---> ", isLogin);
+
+        try {
+            const data = await logout();
+            console.log("로그아웃 성공:", data);
+
+            setIsLogin(false);
+            // localStorage.removeItem("user");
+            navigate("/");
+        } catch (err) {
+            alert("로그아웃 실패");
+            console.error(err);
+        }
+
         setIsLogin(false);
+        navigate("/");
     };
 
     return (
@@ -40,12 +58,20 @@ const Navigation = memo(() => {
                 </div>
 
                 <div className="flex gap-2 items-center">
-                    <Link to="/login" className="text-black text-lg">
-                        Login
-                    </Link>
-                    <Link to="/register" className="text-black text-lg">
-                        Register
-                    </Link>
+                    {!isLogin ? (
+                        <>
+                            <Link to="/login" className="text-black text-lg">
+                                Login
+                            </Link>
+                            <Link to="/register" className="text-black text-lg">
+                                Register
+                            </Link>
+                        </>
+                    ) : (
+                        <Link to="/logout" onClick={handleLogout} className="text-black text-lg">
+                            Logout
+                        </Link>
+                    )}
                 </div>
             </div>
         </nav>

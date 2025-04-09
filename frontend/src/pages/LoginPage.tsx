@@ -3,11 +3,13 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "../api/auth";
 import { ENV } from "../config/env";
+import { useAuth } from "../contexts/AuthContext";
 
 const LoginPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
+    const { setIsLogin } = useAuth();
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -21,8 +23,8 @@ const LoginPage = () => {
             const data = await login(email, password);
             console.log("로그인 성공:", data);
 
-            // 예: 토큰 저장 + 리다이렉트
-            localStorage.setItem("user", JSON.stringify(data));
+            setIsLogin(true);
+            // localStorage.setItem("user", JSON.stringify(data));
             navigate("/");
         } catch (err) {
             alert("로그인에 실패했습니다.");
