@@ -18,3 +18,10 @@ export const registerUser = async (userData: { nickname: string; email: string; 
     console.log("registerUser[res] ---> ", res);
     return res.data;
 };
+
+export const logout = async () => {
+    console.log("logout");
+    const res = await axiosInstance.get("/user/logout"); // JWT 쿠키 삭제용
+    console.log("logout[res] ---> ", res);
+    return res.data;
+};
