@@ -3,9 +3,9 @@ import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import { User } from "../types/index";
 
 const { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_REDIRECT_URL, JWT_SECRET, JWT_EXPIRES_IN } = process.env;
-console.log(GOOGLE_CLIENT_ID);
-console.log(GOOGLE_CLIENT_SECRET);
-console.log(GOOGLE_REDIRECT_URL);
+// console.log(GOOGLE_CLIENT_ID);
+// console.log(GOOGLE_CLIENT_SECRET);
+// console.log(GOOGLE_REDIRECT_URL);
 
 passport.use(
     new GoogleStrategy(

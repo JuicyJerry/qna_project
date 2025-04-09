@@ -7,8 +7,11 @@
         "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true,
         "strict": true,
-        "resolveJsonModule": true
+        "resolveJsonModule": true,
+        "types": ["jest", "node"],
+        "moduleResolution": "node",
+        "allowJs": false
     },
-    "include": ["./src/**/*.ts"],
-    "exclude": ["node_modules", "**/*.spec.ts", "build"]
+    "include": ["./src/**/*.ts", "src/__test__"],
+    "exclude": ["node_modules", "**/*.spec.ts", "build", "**/*.test.ts", "**/__test__/**"]
 }
