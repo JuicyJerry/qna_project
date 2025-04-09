@@ -9,6 +9,7 @@ import quizRouter from "./routes/quiz";
 import userRouter from "./routes/user";
 import protectedRouter from "./routes/protected";
 import authRouter from "./routes/auth";
+import emailRouter from "./routes/email";
 
 import "./auth/google"; // 서버 진입 시 전략 미리 등록 ->  passport.authenticate("google") 라우터가 전략 찾을 수 있음
 import "./auth/kakao";
@@ -35,6 +36,7 @@ export const createApp = () => {
     app.use("/user", userRouter);
     app.use("/protected", protectedRouter);
     app.use("/auth", authRouter);
+    app.use("/email", emailRouter);
 
     app.get("/", (req, res) => {
         res.send("QNA 서버가 실행 중입니다!");
