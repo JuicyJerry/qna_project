@@ -8,6 +8,7 @@ import ResultPage from "./pages/ResultPage";
 import LoginPage from "./pages/LoginPage";
 import OAuthGoogleHandler from "./utils/OAuthGoogleHandler";
 import OAuthKakaoHandler from "./utils/OAuthKakaoHandler";
+import RegisterPage from "./pages/RegisterPage";
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/oauthgoogle" element={<OAuthGoogleHandler />} />
                 <Route path="/oauthkakao" element={<OAuthKakaoHandler />} />
+                <Route path="/register" element={<RegisterPage />} />
             </Routes>
         </div>
     );

@@ -11,3 +11,10 @@ export const getUserMe = async () => {
     console.log("getUserMe ---> ", res);
     return res.data;
 };
+
+export const registerUser = async (userData: { nickname: string; email: string; password: string }) => {
+    console.log("registerUser[userData] ---> ", userData);
+    const res = await axiosInstance.post("/user/register", userData);
+    console.log("registerUser[res] ---> ", res);
+    return res.data;
+};

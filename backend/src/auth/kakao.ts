@@ -1,6 +1,6 @@
 import passport from "passport";
 import { Strategy as KakaoStrategy } from "passport-kakao";
-import { User } from "../types/index";
+import { KakaoUser } from "../types/index";
 
 const { KAKAO_CLIENT_ID, KAKAO_CLIENT_SECRET, KAKAO_REDIRECT_URL } = process.env;
 
@@ -12,10 +12,10 @@ passport.use(
             callbackURL: KAKAO_REDIRECT_URL!,
         },
         async (accessToken, refreshToken, profile, done) => {
-            const user: User = {
+            const user: KakaoUser = {
                 id: profile.id,
                 email: profile._json?.kakao_account?.email,
-                name: profile.username,
+                name: profile.username || "Unknown",
                 provider: "kakao",
             };
             console.log("KakaoStrategy ---> ", user);

@@ -25,3 +25,10 @@ export interface User {
     nickname: string;
     provider: "local" | "google" | "kakao";
 }
+
+export interface KakaoUser {
+    id: string;
+    email: string;
+    name: string;
+    provider: "local" | "google" | "kakao";
+}
