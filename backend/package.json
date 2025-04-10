@@ -6,7 +6,8 @@
         "build": "npx tsc",
         "start": "nodemon build/index.js",
         "dev": "concurrently \"npx tsc --watch\" \"nodemon build/index.js --ignore build/\"",
-        "test": "jest --watchAll"
+        "test": "jest --watchAll --detectOpenHandles",
+        "test:ci": "jest"
     },
     "author": "",
     "license": "ISC",
