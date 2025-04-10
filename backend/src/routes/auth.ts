@@ -8,11 +8,11 @@ const router = Router();
 // 구글 로그인 진입
 router.get("/google", passport.authenticate("google", { scope: ["profile", "email"] }));
 
-const JWT_SECRET: string = process.env.JWT_SECRET ?? "default_secret";
-const JWT_EXPIRES_IN: string | number = process.env.JWT_EXPIRES_IN ?? "1h";
-const GOOGLE_REDIRECT_URL: string = process.env.GOOGLE_REDIRECT_URL ?? "http://localhost:3000/login";
-const GOOGLE_REDIRECT_URL_FOR_CLIENT: string = process.env.GOOGLE_REDIRECT_URL_FOR_CLIENT ?? "http://localhost:3000/login";
-const KAKAO_REDIRECT_URL_FOR_CLIENT: string = process.env.KAKAO_REDIRECT_URL_FOR_CLIENT ?? "http://localhost:3000/login";
+const JWT_SECRET: string = process.env.JWT_SECRET ?? "";
+const JWT_EXPIRES_IN: string | number = process.env.JWT_EXPIRES_IN ?? "";
+const GOOGLE_REDIRECT_URL: string = process.env.GOOGLE_REDIRECT_URL ?? process.env.LOGIN_FAIL_URL!;
+const GOOGLE_REDIRECT_URL_FOR_CLIENT: string = process.env.GOOGLE_REDIRECT_URL_FOR_CLIENT ?? process.env.LOGIN_FAIL_URL!;
+const KAKAO_REDIRECT_URL_FOR_CLIENT: string = process.env.KAKAO_REDIRECT_URL_FOR_CLIENT ?? process.env.LOGIN_FAIL_URL!;
 const signOptions: SignOptions = {
     expiresIn: JWT_EXPIRES_IN as SignOptions["expiresIn"],
 };

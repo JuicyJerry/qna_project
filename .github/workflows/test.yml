@@ -1,0 +1,53 @@
+# 깃헙이 야물 파일 읽어 판단
+# steps: 파이프 라인 정의
+
+name: test
+on:
+    push:
+        branches: [dev]
+    pull_request:
+        branches: [dev, main]
+jobs:
+    test:
+        runs-on: ubuntu-24.04
+        defaults:
+            run:
+                working-directory: ./backend
+        env:
+            API_PORT: ${{ secrets.API_PORT  }}
+            API_BASE_URL: ${{ secrets.API_BASE_URL  }}
+            GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+            GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET  }}
+            GOOGLE_REDIRECT_URL: ${{ secrets.GOOGLE_REDIRECT_URL  }}
+            GOOGLE_REDIRECT_URL_FOR_CLIENT: ${{ secrets.GOOGLE_REDIRECT_URL_FOR_CLIENT  }}
+            KAKAO_CLIENT_ID: ${{ secrets.KAKAO_CLIENT_ID  }}
+            KAKAO_CLIENT_SECRET: ${{ secrets.KAKAO_CLIENT_SECRET  }}
+            KAKAO_REDIRECT_URL: ${{ secrets.KAKAO_REDIRECT_URL  }}
+            KAKAO_REDIRECT_URL_FOR_CLIENT: ${{ secrets.KAKAO_REDIRECT_URL_FOR_CLIENT  }}
+            JWT_SECRET: ${{ secrets.JWT_SECRET  }}
+            JWT_EXPIRES_IN: ${{ secrets.JWT_EXPIRES_IN  }}
+            NODE_ENV: ${{ secrets.NODE_ENV  }}
+            EMAIL_USER: ${{ secrets.EMAIL_USER  }}
+            EMAIL_PASS: ${{ secrets.EMAIL_PASS  }}
+            MONGODB_URI: ${{ secrets.MONGODB_URI  }}
+            LIST_KEY: ${{ secrets.LIST_KEY  }}
+            REDIS_URL: ${{ secrets.REDIS_URL  }}
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v3
+            - name: Node.js setup
+              uses: actions/setup-node@v3
+              with:
+                  node-version: "18"
+            - name: Install npm packages
+              run: npm ci
+            - name: install and run redis-server
+              run: |
+                  sudo apt-get update
+                  sudo apt-get install -y redis-server
+                  redis-server --daemonize yes --requirepass test_env --port 6380
+            - name: Run test
+              run: npm run test:ci
+            - name: test build
+              run: npm run build
