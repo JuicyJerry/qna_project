@@ -3,10 +3,10 @@
 
 name: test
 on:
+    push:
+        branches: [dev]
     pull_request:
-        branches:
-            - dev
-            - main
+        branches: [dev, main]
 jobs:
     test:
         runs-on: ubuntu-24.04
@@ -28,4 +28,3 @@ jobs:
               run: npm run test:ci
             - name: test build
               run: npm run build
-            # GitHub Actions 트리거 테스트용 주석
