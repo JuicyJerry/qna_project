@@ -25,7 +25,10 @@ jobs:
                   sudo apt-get update
                   sudo apt-get install -y redis-server
                   redis-server --daemonize yes --requirepass test_env --port 6380
+              working-directory: ./backend
             - name: Run test
               run: npm run test:ci
+              working-directory: ./backend
             - name: test build
               run: npm run build
+              working-directory: ./backend
